@@ -24,24 +24,6 @@ var superEggDrop = function(K, N) {
                 k++
             }
             f[i][j] =  Math.max(f[i - 1][k - 1] + 1, f[i][j - k] + 1)
-
-            // for(let k = 2; k < j; k ++) {
-            //     temp = Math.max(f[i - 1][k - 1] + 1, f[i][j - k] + 1)
-            //     f[i][j] = temp < f[i][j] ? temp : f[i][j]
-            // }
-
-            // if(j % 2 == 0) {
-            //     let k = j / 2
-            //     if(k - 1 > 1) {
-            //         f[i][j] = Math.min(Math.max(f[i - 1][k - 1],f[i][j - k]), Math.max(f[i - 1][k - 2],f[i][j - k + 1])) + 1
-            //     } else f[i][j] =  Math.max(f[i - 1][k - 1],f[i][j - k]) + 1
-            // } else {
-            //     let k = parseInt(j / 2)
-            //     if(k > 1) {
-            //         f[i][j] = Math.min(Math.max(f[i - 1][k],f[i][j - k - 1]), Math.max(f[i - 1][k - 1],f[i][j - k])) + 1    
-            //     } else f[i][j] = Math.max(f[i - 1][k],f[i][j - k - 1]) + 1
-            // }
-
         }
     }
     console.log(f)
@@ -49,3 +31,13 @@ var superEggDrop = function(K, N) {
 };
 superEggDrop(2,19)
 // console.log(Math.max(2,2))
+
+
+/**
+ * @param {number} K
+ * @param {number} N
+ * @return {number}
+ */
+var superEggDrop2 = function(K, N) {
+
+};
