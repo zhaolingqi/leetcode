@@ -9,6 +9,11 @@
  * 
  * 方法3：快慢指针
  *         
+ * 方法4：二分查找 
+ * cnt[i]表示nums中小于等于i的个数，假设重复的数为target，
+ * 则[1, target - 1]中，必有i <= cnt[i],
+ * 再[target, n] 中，i>cnt[i]
+ * 
  *         
  * @param {number[]} nums
  * @return {number}
