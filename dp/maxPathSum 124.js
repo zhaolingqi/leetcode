@@ -53,3 +53,18 @@ var maxPathSum = function (root) {
         return node.val + Math.max(left, right)
     }
 };
+
+const maxBinaryTreePath = (root) => {
+
+    let max = Number.NEGATIVE_INFINITY;
+    maxBinaryPath(root);
+    return max;
+
+    function maxBinaryPath(node) {
+        if(node === null) return 0
+        let left = Math.max(0, maxBinaryPath(node.left));
+        let right = Math.max(0, maxBinaryPath(node.right));
+        let max = Math.max(max, node.val + left + right);
+        return node.val + Math.max(left, right);
+    }
+}

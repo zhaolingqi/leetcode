@@ -15,6 +15,7 @@ var subarraysDivByK = function (A, K) {
         pre += num
         let key = (pre % K + K) % K
         if(map.has(key)) count += map.get(key)
+        if(map.has(key)) map.set(key, map.get(key) + 1)
         else map.set(key, 1);
     }
     return count

@@ -43,6 +43,57 @@ MountainArray.length() - 会返回该数组的长度
  * @param {MountainArray} mountainArr
  * @return {number}
  */
-var findInMountainArray = function(target, mountainArr) {
-    
+var findInMountainArray = function (target, mountainArr) {
+    let length = mountainArr.length()
+    let start = 0
+    let end = length - 1
+    let max = -1
+    while (start <= end) {
+        if (start === end) {
+            max = start
+            break
+        }
+        let mid = Math.floor((start + end) / 2)
+        if (mountainArr.get(mid + 1) > mountainArr.get(mid)) {
+            start = mid + 1
+        } else if (mountainArr.get(mid - 1) > mountainArr.get(mid)) {
+            end = mid - 1
+        } else {
+            max = mid
+            break
+        }
+    }
+    let first = -1, second = -1
+    start = 0, end = max
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2)
+        let val = mountainArr.get(mid)
+        if (val < target) {
+            start = mid + 1
+        } else if (val > target) {
+            end = mid - 1
+        } else if (val === target) {
+            first = mid
+            break
+        }
+    }
+    start = max + 1
+    end = length - 1
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2)
+        let val = mountainArr.get(mid)
+        if (val > target) {
+            start = mid + 1
+        } else if (val < target) {
+            end = mid - 1
+        } else if (val === target) {
+            second = mid
+            break
+        }
+    }
+    if (first === -1) {
+        if (second === -1) return -1
+        else return second
+    } else return first
+
 };
