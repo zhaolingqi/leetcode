@@ -28,7 +28,7 @@ var isMatch = function(s, p) {
     let N = p.length
     let f = new Array(M + 1)
     for(let i = 0; i <= M; i++) {
-        f[i] = new Array()
+        f[i] = [];
         for(let j = 0; j <= N; j++) {
             f[i][j] = false
         }
@@ -47,8 +47,7 @@ var isMatch = function(s, p) {
     }
     return f[M][N]
 }
-console.log(isMatch("aa"
-,"*"))
+console.log(isMatch("aa", "*"));
 
 // 简化字符串p,将连续多个*简化为单个*
 function simplify(p) {
