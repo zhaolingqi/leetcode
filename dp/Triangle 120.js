@@ -58,3 +58,14 @@ var tri = [
 [-10]
 ]
 console.log(minimumTotal(tri))
+
+const minimumTotal1 = (triangle) => {
+    const n = triangle.length;
+    for(let i = n - 2; i >= 0; i--) {
+        for(let j = 0; j <= i; j++) {
+            triangle[i][j] = Math.min(triangle[i + 1][j], triangle[i + 1][j + 1]) + triangle[i][j];
+        }
+    }
+    console.log(triangle);
+}
+minimumTotal1([[2],[3,4],[6,5,7],[4,1,8,3]]);
