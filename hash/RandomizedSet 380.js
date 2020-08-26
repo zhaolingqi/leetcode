@@ -63,14 +63,10 @@ RandomizedSet.prototype.remove = function (val) {
     if (this.map.has(val)) {
         let index = this.map.get(val)
         this.map.delete(val)
-        if(this.map.size === 0) {
-            this.arr = []
-            this.num = 0
-        } else {
-            this.arr[index] = this.arr[this.num - 1]
-            this.map.set(this.arr[index], index)
-            this.num --
-        } 
+        this.arr[index] = this.arr[this.num - 1]
+        this.arr.pop()
+        this.map.set(this.arr[index], index)
+        this.num --    
         return true
     }
     else {
@@ -86,6 +82,7 @@ RandomizedSet.prototype.getRandom = function () {
     let random = Math.floor(Math.random() * (this.num))
     return this.arr[random]
 };
+
 
 
 /**

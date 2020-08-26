@@ -29,7 +29,6 @@ var lowestCommonAncestor = function (root, p, q) {
     var resNode = null
     return resNode
 
-
     function findNext(curNode) {
         if (curNode === null) return false
         let mid = (curNode === p || curNode === q) ? 1 : 0
