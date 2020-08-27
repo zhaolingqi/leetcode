@@ -40,4 +40,20 @@ var coinChange = function(coins, amount) {
     console.log(dp[6249 - 83],dp[6249 - 186],dp[6249 - 408], dp[6249 - 419])
     return dp[amount]
 };
-coinChange([186,419,83,408], 6249)
+// coinChange([186,419,83,408], 6249)
+
+
+var change = function(amount, coins) {
+    let N = coins.length
+    let dp = new Array(amount + 1).fill(0)
+    dp[0] = 1
+    for(let i = 0; i < N; i++) {
+        for(let j = 1; j <= amount; j++) {
+            if(j - coins[i] >= 0) dp[j] = dp[j] + dp[j - coins[i]]
+        }
+    }
+    console.log(dp)
+    return dp[amount]
+};
+
+change(5,[1,2,5])

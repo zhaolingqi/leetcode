@@ -36,26 +36,49 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
+    // let N = prices.length
+    // if(N <= 1) return 0
+    // let i = 0
+    // let j = 1
+    // let max = 0  
+    // while(j < N) {
+    //     if(prices[i] < prices[j]) {
+    //         if(j + 1 >= N || prices[j] > prices[j + 1]) {
+    //             max += prices[j] - prices[i]
+    //             i = j + 1
+    //             j = i + 1
+    //         } else {
+    //             j++
+    //         }
+    //     } else {
+    //         i = j
+    //         j++
+    //     }
+    // }
+    // return max
     let N = prices.length
-    if(N <= 1) return 0
-    let i = 0
-    let j = 1
-    let max = 0  
-    while(j < N) {
-        if(prices[i] < prices[j]) {
-            if(j + 1 >= N || prices[j] > prices[j + 1]) {
-                max += prices[j] - prices[i]
-                i = j + 1
-                j = i + 1
-            } else {
-                j++
+    let dp = new Array(N + 1)
+    // dp[i][k] 第i天， 第k次卖出的最大收益
+    for(let i = 0; i <= N; i++) {
+        dp[i] = new Array(3).fill(0)
+    }
+    for(let i = 0; i <= N; i++) {
+        dp[i][0] = 0
+    }
+    dp[0][1] = 0
+    dp[0][2] = 0
+    console.log(dp)
+    for(let k = 1; k <= 2; k++) {
+        for(let i = 1; i <= N; i++) {
+            let j = 0
+            for(j = 1; j < i; j++) {
+                dp[i][k] = dp[i][k] > prices[i - 1] - prices[j - 1] + dp[j - 1][k - 1] ? dp[i][k] : prices[i] - prices[j] + dp[j - 1][k - 1]
             }
-        } else {
-            i = j
-            j++
         }
     }
-    return max
+    console.log(dp)
+    return dp[N][2]
+
 };
 let arr = [1,2,3,4,5]
 console.log(maxProfit(arr))

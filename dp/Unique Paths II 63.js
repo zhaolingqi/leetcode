@@ -28,48 +28,88 @@
  * @param {number[][]} obstacleGrid
  * @return {number}
  */
+// var uniquePathsWithObstacles = function(obstacleGrid) {
+//     var m = obstacleGrid.length
+//     var n = obstacleGrid[0].length
+//     var f = new Array(m)
+//     for(let i = 0; i < m; i++) {
+//         f[i] = new Array(n)
+//     }
+//     var flag = 0
+//     for(let i = 0; i < n; i++) {
+//         if(flag === 0) {
+//             if(obstacleGrid[0][i] === 1) {
+//                 f[0][i] = 0
+//                 flag = 1
+//             } else {
+//                 f[0][i] = 1
+//             }
+//         } else f[0][i] = 0
+//     }
+//     flag = 0
+//     console.log(f)
+//     for(let i = 0; i < m; i++) {
+//         if(flag === 0) {
+//             if(obstacleGrid[i][0] === 1) {
+//                 f[i][0] = 0
+//                 flag = 1
+//             } else {
+//                 f[i][0] = 1
+//             }
+//         } else {
+//             f[i][0] = 0
+//         }
+//     }
+//     console.log(f)
+//     for(let i = 1; i < m; i++) {
+//         for(let j = 1; j < n; j++) {
+//             if(obstacleGrid[i][j] === 1) {
+//                 f[i][j] = 0
+//             } else {
+//                 f[i][j] = f[i - 1][j] + f[i][j - 1]
+//             }
+//         }
+//     }
+//     return f[m - 1][n - 1]
+// };
+// console.log(uniquePathsWithObstacles([[0],[1]]))
+
+/**
+ * @param {number[][]} obstacleGrid
+ * @return {number}
+ */
 var uniquePathsWithObstacles = function(obstacleGrid) {
-    var m = obstacleGrid.length
-    var n = obstacleGrid[0].length
-    var f = new Array(m)
-    for(let i = 0; i < m; i++) {
-        f[i] = new Array(n)
+    const M = obstacleGrid.length;
+    if(M < 1) return 0;
+    const N = obstacleGrid[0].length;
+    if(M === 1 && N === 1) {
+        return obstacleGrid[0][0] ? 0 : 1;
     }
-    var flag = 0
-    for(let i = 0; i < n; i++) {
-        if(flag === 0) {
-            if(obstacleGrid[0][i] === 1) {
-                f[0][i] = 0
-                flag = 1
-            } else {
-                f[0][i] = 1
-            }
-        } else f[0][i] = 0
+    let dp = [];
+    for(let i = 0; i < M; i++) {
+        dp[i] = [];
     }
-    flag = 0
-    console.log(f)
-    for(let i = 0; i < m; i++) {
-        if(flag === 0) {
-            if(obstacleGrid[i][0] === 1) {
-                f[i][0] = 0
-                flag = 1
-            } else {
-                f[i][0] = 1
-            }
-        } else {
-            f[i][0] = 0
-        }
+    if(obstacleGrid[0][0]) return 0;
+    dp[0][0] = 1;
+    for(let i = 1; i < M; i++) {
+        dp[i][0] = obstacleGrid[i][0] ? 0 : dp[i - 1][0];
     }
-    console.log(f)
-    for(let i = 1; i < m; i++) {
-        for(let j = 1; j < n; j++) {
-            if(obstacleGrid[i][j] === 1) {
-                f[i][j] = 0
+    for(let j = 1; j < N; j++) {
+        dp[0][j] = obstacleGrid[0][j] ? 0 : dp[0][j - 1];
+    }
+    console.log(dp);
+    for(let i = 1; i < M; i++) {
+        for(let j = 1; j < N; j++) {
+            if(obstacleGrid[i][j]) {
+                dp[i][j] = 0
             } else {
-                f[i][j] = f[i - 1][j] + f[i][j - 1]
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
             }
         }
     }
-    return f[m - 1][n - 1]
+    console.log(dp);
+    return dp[M - 1][N - 1];
 };
-console.log(uniquePathsWithObstacles([[0],[1]]))
+const arr = [[0]];
+const res = uniquePathsWithObstacles(arr);
+console.log(res);
