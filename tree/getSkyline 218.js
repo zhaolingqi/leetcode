@@ -116,4 +116,4 @@ var getSkyline = function (buildings) {
     // return result
 
 };
-console.log(getSkyline([[1,2,1],[1,2,2],[1,2,3]]))
+// console.log(getSkyline([[1,2,1],[1,2,2],[1,2,3]]))
