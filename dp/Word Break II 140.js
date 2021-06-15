@@ -33,7 +33,6 @@ var wordBreak = function (s, wordDict) {
             else f[i][j] = false
         }
     }
-    // return dp[N]
     let temp = []
     let tempStr
     let tempStrArr = []
@@ -61,6 +60,6 @@ var wordBreak = function (s, wordDict) {
     return strReturn
 };
 let s =
-    "catsandog"
+    "catsanddog"
 let word = ["cats", "dog", "sand", "and", "cat"]
 console.log(wordBreak(s, word))

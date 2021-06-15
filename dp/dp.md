@@ -13,8 +13,7 @@ marp: true
 $$
 c[i,j] = 
 \begin{cases}
-		c[i + 1, j - 1],& \text{s[i] = s[j]}\\
-		0, & \text{s[i] != s[j]}
+		c[i + 1, j - 1],& \text{s[i] = s[j]}\\0, & \text{s[i] != s[j]}
 	\end{cases}
 $$
 其中

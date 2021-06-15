@@ -55,7 +55,7 @@ Solution.prototype.shuffle = function () {
     //     this.shuffleNum[i] = this.shuffleNum[index]
     //     this.shuffleNum[index] = temp
     // }
-    for (let i = this.N - 1; i >= 0; i++) {
+    for (let i = this.N - 1; i >= 0; i--) {
         let index = Math.floor(Math.random() * (i + 1))
         let temp = this.shuffleNum[i]
         this.shuffleNum[i] = this.shuffleNum[index]
